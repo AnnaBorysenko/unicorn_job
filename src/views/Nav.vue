@@ -4,6 +4,7 @@
 
 <template>
   <div class="nav">Nav</div>
+  <id>test</id>
 </template>
 
 <style lang="scss">
