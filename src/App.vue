@@ -1,6 +1,6 @@
 <script setup>
 import {provide, reactive} from 'vue';
-import Nav from "../src/views/Nav.vue"
+import Nav from "../src/components/JobNav.vue"
 import Home from "../src/views/Home.vue"
 
 //     By choosing the Composition API for this task,

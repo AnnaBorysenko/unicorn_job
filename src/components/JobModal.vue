@@ -31,10 +31,10 @@ const close = () => {
   emit('close');
 };
 
-//     Сreates an observation that tracks changes in the job variable.
-//     Every time the job changes, this function is executed automatically.
-//     In the body of the function, it checks if the job exists and if so,
-//     the localJob.value is set to a copy of the job object to update the component's data. ' +
+//    Сreates an observation that tracks changes in the job variable.
+//    Every time the job changes, this function is executed automatically.
+//    In the body of the function, it checks if the job exists and if so,
+//    the localJob.value is set to a copy of the job object to update the component's data.
 //    If the job does not exist (for example, if the job is null),
 //    then localJob.value is initialized with a new object with default values for title, icon, and color.
 watchEffect(() => {

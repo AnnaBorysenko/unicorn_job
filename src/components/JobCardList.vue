@@ -1,7 +1,7 @@
 <script setup>
 import { inject, ref } from 'vue';
 import JobCard from '../components/JobCard.vue';
-import JobModel from "../components/JobModel.vue";
+import JobModal from "../components/JobModal.vue";
 
 const jobsData = inject('jobsData');
 const modalActive = ref(false);
@@ -35,7 +35,7 @@ const createJob = (newJob) => {
         </div>
       </div>
       <div class="job-card-title add-title">Add new Unicorn</div>
-      <JobModel
+      <JobModal
           @create="createJob"
           @close="toggleModal"
           :modalActive="modalActive"/>

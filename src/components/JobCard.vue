@@ -1,6 +1,6 @@
 <script setup>
 import {defineProps, defineEmits, ref, inject} from 'vue';
-import JobModel from "../components/JobModel.vue";
+import JobModal from "../components/JobModal.vue";
 
 defineProps({
   job: Object
@@ -16,7 +16,7 @@ const toggleFavorite = (job) => {
   emit('update-favorite', job);
 };
 
-// This function is designed to update the job object in the array of jobs stored in the jobsData object,
+//  This function is designed to update the job object in the array of jobs stored in the jobsData object,
 //  replacing the old object with a new one using the job ID.
 const updateJob = (updatedJob) => {
   const index = jobsData.jobs.findIndex(job => job.id === updatedJob.id);
@@ -45,7 +45,7 @@ const toggleModal = () => {
       <div class="icon-edit-container">
         <span @click="toggleModal" class="material-icons">edit</span>
       </div>
-      <JobModel
+      <JobModal
           @update="updateJob"
           @delete="deleteJob"
           @close="toggleModal"
