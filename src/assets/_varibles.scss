@@ -1,4 +1,23 @@
-$color-bg: linear-gradient(90deg, rgba(23,30,69,1) 0%, rgba(25,25,25,1) 100%);
-$color-secondary: #03dac6;
+$color-main_bg: linear-gradient(90deg, rgba(23, 30, 69, 1) 0%, rgba(25, 25, 25, 1) 100%);
+$color-bg: #000;
 $color-text: #fff;
-$color-error: #b00020;
+
+$color-icons-UI: #FAFF00;
+$color-icon-wrap: #14161E;
+$color-icon-chosen: #72FF5B;
+$color-icon-favorite: #FF5B79FF;
+
+$color-form-bg: #343434;
+$color-form-text: #E9E9E9;
+$color-form-input: #4E4E4E;
+$color-form-btn-cancel: #3F4000;
+$color-form-btn-delete: #94331D;
+
+$font-size-xs: 12px;
+$font-size-sm: 18px;
+$font-size-md: 24px;
+$font-size-lg: 29px;
+$font-size-xl: 42px;
+
+$font-weight-base: 400;
+$font-weight-medium: 500;
