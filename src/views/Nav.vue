@@ -1,12 +1,13 @@
 <script setup>
-import { ref, inject, watchEffect } from 'vue';
+import {ref, inject, watchEffect} from 'vue';
 
-// Assuming 'jobsData' is provided by a parent component or a plugin
+// Is used to retrieve values that were provided at a higher level in the component tree.
 const jobsData = inject('jobsData');
 
 const favoriteCount = ref(0);
 
-// Automatically update favoriteCount whenever jobsData.jobs changes
+//  Is used to automatically track changes in the jobsData.jobs list and update the favoriteCount.value.
+//  It filters the list of jobs to find only those that are labeled "favorite"
 watchEffect(() => {
   if (jobsData && jobsData.jobs) {
     favoriteCount.value = jobsData.jobs.filter(job => job.isFavorite).length;
@@ -15,12 +16,15 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div class="nav_wrap">
+  <div class="nav-wrap">
     <div class="nav">
-      <div class="nav_logo">
-        <div class="nav_logo_text">Unicorn Jobs - {{ favoriteCount }} Saved</div>
+      <div class="nav-logo">
+        <div class="nav-logo-text">Unicorn Jobs -
+          <span class="favorite-count">{{ favoriteCount }}</span>
+          <span class="favorite-text">Saved</span>
+        </div>
       </div>
-      <div class="nav_burger_menu">
+      <div class="nav-burger-menu">
         <span class="material-icons">menu</span>
       </div>
     </div>
@@ -30,11 +34,11 @@ watchEffect(() => {
 <style lang="scss">
 @import '../assets/_varibles.scss';
 
-.nav_wrap {
+.nav-wrap {
   position: fixed;
-  top: 0;
-  width: 100%;
   z-index: 999;
+  width: 100%;
+  top: 0;
   background-color: $color_bg;
 }
 
@@ -42,17 +46,27 @@ watchEffect(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 80px;
   margin: 0 10px;
   color: $color-text;
-  height: 80px;
   font-weight: $font-weight-base;
 }
 
-.nav_logo_text {
+.favorite-count {
+  position: absolute;
+  color: $color-icons-UI;
+  left: 128px;
+
+}
+.favorite-text {
+  margin: 14px;
+}
+
+.nav-logo-text {
   font-size: $font-size-sm;
 }
 
-.nav_burger_menu .material-icons {
+.nav-burger_menu .material-icons {
   color: $color-icons-UI;
   font-size: 48px;
 }

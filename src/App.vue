@@ -1,17 +1,22 @@
 <script setup>
-import { provide, reactive } from 'vue';
-// чому Composition API
+import {provide, reactive} from 'vue';
 import Nav from "../src/views/Nav.vue"
 import Home from "../src/views/Home.vue"
 
+//     By choosing the Composition API for this task,
+//     I focused on the principles of reactive programming that allow you to effectively manage the state of components.
+//     The Composition API allows you to create compact and understandable code,
+//     which makes it easier to develop and maintain.
+//     In addition, using the Composition API provides more flexibility and control over the structure of components,
+//     making development easier and more efficient.
 
 const data = reactive({
   jobs: [
-    { id: 1, title: 'Police Pizza Delivery Driver position', icon: 'local_pizza', isFavorite: false },
-    { id: 2, title: 'Frontend Vue.js Developer', icon: 'keyboard', isFavorite: false },
-    { id: 3, title: 'Unicorn Job Name', icon: 'pool', isFavorite: false },
-    { id: 4, title: 'Baker', icon: 'cookie', isFavorite: false },
-    { id: 5, title: 'Unicorn Job Name', icon: 'pool', isFavorite: false },
+    {id: 1, title: 'Police Pizza Delivery Driver position', icon: 'local_pizza', color: '#72FF5B', isFavorite: false},
+    {id: 2, title: 'Frontend Vue.js Developer', icon: 'keyboard', color: '#72FF5B', isFavorite: false},
+    {id: 3, title: 'Unicorn Job Name', icon: 'pool', color: '#72FF5B', isFavorite: false},
+    {id: 4, title: 'Baker', icon: 'cookie', color: '#72FF5B', isFavorite: false},
+    {id: 5, title: 'Unicorn Job Name', icon: 'pool', color: '#72FF5B', isFavorite: false},
   ]
 });
 
@@ -31,5 +36,4 @@ body {
   background: $color_main_bg;
   margin: 0;
 }
-
 </style>

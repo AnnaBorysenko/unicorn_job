@@ -3,8 +3,13 @@ import {defineProps, defineEmits, ref, watchEffect} from 'vue';
 
 // Define props and emits
 const {job, modalActive} = defineProps(['job', 'modalActive']);
-let localJob = ref(job ? {...job} : {title: '', icon: ''});
 const emit = defineEmits(['update', 'delete', 'close', 'toggleFavorite']);
+
+//   localJob variable, which is a reactive reference (ref) to the object that represents the job.
+//   localJob accepts a copy of this object.
+//   This allows the component to work with a local copy of the job object so as not to directly
+//   modify the incoming job and ensure data isolation.
+let localJob = ref(job ? {...job} : {title: '', icon: ''});
 
 const saveJobCard = () => {
   if (localJob.value && localJob.value.id) {
@@ -25,11 +30,79 @@ const toggleFavorite = (job) => {
 const close = () => {
   emit('close');
 };
+
+//     Сreates an observation that tracks changes in the job variable.
+//     Every time the job changes, this function is executed automatically.
+//     In the body of the function, it checks if the job exists and if so,
+//     the localJob.value is set to a copy of the job object to update the component's data. ' +
+//    If the job does not exist (for example, if the job is null),
+//    then localJob.value is initialized with a new object with default values for title, icon, and color.
 watchEffect(() => {
-  localJob.value = job ? {...job} : {title: '', icon: ''};
+  localJob.value = job ? {...job} : {title: '', icon: '', color: ''};
 });
 
 </script>
+
+<template>
+  <transition name="modal-animation">
+    <div v-show="modalActive" class="modal modal-mask">
+      <transition name="modal-animation-inner">
+        <div v-show="modalActive" class="modal-inner">
+          <form class="form" @submit.prevent>
+            <div @click="close" class="icon-exit-container">
+              <span class="material-icons">close</span>
+            </div>
+            <div class="main-form-wrap">
+              <div class="input-wrap">
+                <div class="input-container">
+                  <label for="card-name" class="card-name-label">Name of Unicorn Job</label>
+                  <input
+                      placeholder="Enter job title"
+                      v-model="localJob.title"
+                      type="text"
+                      id="card_name"
+                      class="card_name_input"
+                  >
+                </div>
+                <div class="input-container">
+                  <label for="card-icon" class="card-icon-label">Material Icon</label>
+                  <input
+                      placeholder="Enter job icon"
+                      v-model="localJob.icon"
+                      type="text"
+                      id="card-icon"
+                      class="card_icon_input"
+                  >
+                  <p class="input-instruction">
+                    <div class="input-instruction-icon">
+                      Use the web codes found on Google’s material icons and paste in the box above!
+                      <a class="form-link" href="https://fonts.google.com/icons" target="_blank">https://fonts.google.com/icons</a>
+                    </div>
+                    <div class="input-instruction-color">
+                      <div class="choose-title-color">Choose a color for the icon:</div>
+                      <input
+                          class="choose-color"
+                          type="color"
+                          v-model="localJob.color"
+                      >
+                    </div>
+                  </p>
+                </div>
+              </div>
+              <div class="form-buttons">
+                <div class="btn-container">
+                  <button class="btn btn-save" @click.stop="saveJobCard">Save</button>
+                  <button class="btn btn-cancel" @click="close" type="button">Cancel</button>
+                </div>
+                <button class="btn btn-delete" @click.stop="deleteJobCard">Delete</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </transition>
+    </div>
+  </transition>
+</template>
 
 <style lang="scss">
 @import '../assets/_varibles.scss';
@@ -62,6 +135,12 @@ watchEffect(() => {
   color: $color-form-text;
 }
 
+.form-link {
+  font-size: $font-size-xs;
+  color: $color-icons-UI;
+}
+
+
 .main-form-wrap {
   max-width: 240px;
   margin: auto;
@@ -73,6 +152,25 @@ watchEffect(() => {
   margin: auto;
   width: 240px;
   padding-bottom: 15px;
+}
+
+.input-instruction {
+  color: $color-form-text;
+  font-size: $font-size-xs;
+  margin: 15px auto 0 auto;
+}
+
+.input-instruction-icon {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+input[type="color" i] {
+  margin-top: 10px;
+  border: 3px;
+  inline-size: 60px;
+  block-size: 60px;
 }
 
 .card_name_input,
@@ -89,23 +187,6 @@ watchEffect(() => {
 .card_name_input:not([type=file]),
 .card_icon_input:not([type=file]) {
   outline: none;
-}
-
-.input-instruction {
-  color: $color-form-text;
-  font-size: $font-size-xs;
-  margin: 15px auto 0 auto;
-}
-
-.input-instruction-icon {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
-.form-link {
-  font-size: $font-size-xs;
-  color: $color-icons-UI;
 }
 
 .form-buttons {
@@ -200,72 +281,8 @@ watchEffect(() => {
   }
 }
 
-input[type="color" i] {
-  margin-top: 10px;
-  border: 3px;
-  inline-size: 60px;
-  block-size: 60px;
-
-}
-
 </style>
 
-<template>
-  <transition name="modal-animation">
-    <div v-show="modalActive" class="modal modal-mask">
-      <transition name="modal-animation-inner">
-        <div v-show="modalActive" class="modal-inner">
-          <form class="form" @submit.prevent="saveJobCard">
-            <div @click="close" class="icon-exit-container">
-              <span class="material-icons">close</span>
-            </div>
-            <div class="main-form-wrap">
-              <div class="input-wrap">
-                <div class="input-container">
-                  <label for="card-name" class="card-name-label">Name of Unicorn Job</label>
-                  <input
-                      placeholder="Enter job title"
-                      v-model="localJob.title"
-                      type="text"
-                      id="card_name"
-                      class="card_name_input"
-                  >
-                </div>
-                <div class="input-container">
-                  <label for="card-icon" class="card-icon-label">Material Icon</label>
-                  <input
-                      placeholder="Enter job icon"
-                      v-model="localJob.icon"
-                      type="text"
-                      id="card-icon"
-                      class="card_icon_input"
-                  >
-                  <p class="input-instruction">
-                    <div class="input-instruction-icon">
-                      Use the web codes found on Google’s material icons and paste in the box above!
-                      <a class="form-link" href="https://fonts.google.com/icons" target="_blank">https://fonts.google.com/icons</a>
-                    </div>
-                    <div class="input-instruction-color">
-                      <div class="choose-title-color">Choose a color for the icon:</div>
-                      <input class="choose-color" type="color">
-                    </div>
-                  </p>
-                </div>
-              </div>
-              <div class="form-buttons">
-                <div class="btn-container">
-                  <button class="btn btn-save" @click.stop="saveJobCard">Save</button>
-                  <button class="btn btn-cancel" @click="close" type="button">Cancel</button>
-                </div>
-                <button class="btn btn-delete" @click.stop="deleteJobCard">Delete</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </transition>
-    </div>
-  </transition>
-</template>
 
 
 

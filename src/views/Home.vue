@@ -4,7 +4,8 @@ import JobCardList from "../components/JobCardList.vue"
 
 <template>
   <div class="home-wrap">
-  <h1 class="home-title">Welcome to Unicorn Jobs, where we display new job roles that combine 2 different careers into one.</h1>
+    <h1 class="home-title">Welcome to Unicorn Jobs, where we display new job roles that combine 2 different careers into
+      one.</h1>
   </div>
   <JobCardList></JobCardList>
 </template>
@@ -12,23 +13,24 @@ import JobCardList from "../components/JobCardList.vue"
 <style lang="scss">
 
 @import '../assets/_varibles.scss';
-.home-wrap {
-  margin: 20px 10px 0 10px ;
 
+.home-wrap {
+  margin: 20px 10px 0 10px;
 }
+
 .home-wrap {
   margin: 0 auto;
   text-align: center;
   max-width: 1014px;
-
 }
+
 .home-title {
-  font-size: $font-size-sm;
-  color: $color-text;
-  text-align: center;
-  font-weight: $font-weight-base;
-  margin: 100px auto 10px auto ;
   max-width: 320px;
   text-align: center;
+  margin: 100px auto 10px auto;
+  font-size: $font-size-sm;
+  text-align: center;
+  font-weight: $font-weight-base;
+  color: $color-text;
 }
 </style>
