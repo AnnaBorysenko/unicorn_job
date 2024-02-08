@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import '../assets/_varibles.scss';
+@import '../assets/_style.scss';
 *,
 *::before,
 *::after {
@@ -7,5 +9,7 @@
   position: relative;
   font-family: 'Inter', sans-serif;
 }
+
+
 
 

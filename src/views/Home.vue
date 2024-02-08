@@ -16,12 +16,19 @@ import JobCardList from "../components/JobCardList.vue"
   margin: 20px 10px 0 10px ;
 
 }
+.home-wrap {
+  margin: 0 auto;
+  text-align: center;
+  max-width: 1014px;
+
+}
 .home-title {
-  font-size: $font-size-md;
+  font-size: $font-size-sm;
   color: $color-text;
   text-align: center;
   font-weight: $font-weight-base;
-  margin: 100px 0 10px;
-
+  margin: 100px auto 10px auto ;
+  max-width: 320px;
+  text-align: center;
 }
 </style>

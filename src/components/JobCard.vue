@@ -32,7 +32,7 @@
 
 
 <script setup>
-import {defineProps, ref, inject} from 'vue';
+import {defineProps, defineEmits, ref, inject} from 'vue';
 import JobModel from "../components/JobModel.vue";
 
 defineProps({
@@ -41,6 +41,7 @@ defineProps({
 
 const modalActive = ref(false);
 const jobsData = inject('jobsData');
+const emit = defineEmits(['update-favorite'])
 
 const toggleFavorite = (job) => {
   job.isFavorite = !job.isFavorite;
@@ -74,6 +75,7 @@ const toggleModal = () => {
 @import '../assets/_varibles.scss';
 
 .job-card-wrap {
+  flex-basis: 33.333333%;
   background-color: $color-bg;
   Width: 304px;
   Height: 356px;
@@ -81,7 +83,10 @@ const toggleModal = () => {
   border-radius: 30px;
   padding-top: 30px;
   border: 1px solid $color-bg;
+  max-width: 304px;
 }
+
+
 
 .job-card-wrap:hover {
   border: 1px solid $color-icons-UI;
@@ -138,11 +143,10 @@ const toggleModal = () => {
   color:$color-icon-favorite;
 }
 
-.icon-chosen-container .material-icons, {
+.icon-chosen-container .material-icons {
   font-size: 96px;
   color: $color-icon-chosen;
 }
-
 
 .job-card-title {
   padding: 10px 0 0 45px;

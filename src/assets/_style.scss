@@ -1,0 +1,63 @@
+@import '../assets/_varibles.scss';
+
+@media only screen and (min-width: 768px) {
+  .main-form-wrap {
+    max-width: 600px;
+  }
+  .form {
+    width: 600px;
+    height: 450px;
+  }
+  .input-container {
+    width: 340px;
+  }
+
+  .job-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    max-width: 1104px;
+    margin: auto;
+  }
+  .job-card-wrap {
+    margin: 30px;
+  }
+  .home-title {
+    max-width: 620px;
+    text-align: left;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .home-title {
+    max-width: 800px;
+  }
+  .home-title {
+    font-size: $font-size-xl;
+  }
+  .form {
+    width: 800px;
+    height: 927px;
+  }
+
+  .job-card-title {
+    font-size: $font-size-md;
+  }
+  .input-instruction {
+    font-size: $font-size-md;
+  }
+  .input-container {
+    width: 600px;
+    margin-bottom: 50px;
+    font-size: $font-size-md;
+  }
+
+}
+
+@media only screen and (min-width: 1280px) {
+  .home-title {
+    max-width: 800px;
+  }
+}

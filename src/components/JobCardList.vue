@@ -50,10 +50,6 @@ const createJob = (newJob) => {
 <style lang="scss">
 @import '../assets/_varibles.scss';
 
-.job-list {
-
-}
-
 .icon-add-container {
   font-size: 48px;
   Width: 96px;
