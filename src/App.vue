@@ -13,9 +13,9 @@ import Home from "../src/views/Home.vue"
 const data = reactive({
   jobs: [
     {id: 1, title: 'Police Pizza Delivery Driver position', icon: 'local_pizza', color: '#72FF5B', isFavorite: false},
-    {id: 2, title: 'Frontend Vue.js Developer', icon: 'keyboard', color: '#72FF5B', isFavorite: true},
+    {id: 2, title: 'Frontend Vue.js Developer', icon: 'keyboard', color: '#72FF5B', isFavorite: false},
     {id: 3, title: 'Unicorn Job Name', icon: 'pool', color: '#72FF5B', isFavorite: false},
-    {id: 4, title: 'Baker', icon: 'cookie', color: '#72FF5B', isFavorite: true},
+    {id: 4, title: 'Baker', icon: 'cookie', color: '#72FF5B', isFavorite: false},
     {id: 5, title: 'Unicorn Job Name', icon: 'pool', color: '#72FF5B', isFavorite: false},
   ]
 });
