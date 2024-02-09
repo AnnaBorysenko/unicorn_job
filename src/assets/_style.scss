@@ -60,4 +60,14 @@
   .home-title {
     max-width: 800px;
   }
+  .form {
+   height: 700px;
+  }
+  .btn {
+    padding : 8px 12px;
+    font-size: $font-size-sm;
+  }
+  .job-card-title.add-title {
+    padding: 10px 0 0 55px;
+  }
 }

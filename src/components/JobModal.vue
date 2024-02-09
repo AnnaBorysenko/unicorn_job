@@ -11,15 +11,37 @@ const emit = defineEmits(['update', 'delete', 'close', 'toggleFavorite']);
 //   modify the incoming job and ensure data isolation.
 let localJob = ref(job ? {...job} : {title: '', icon: ''});
 
+// const saveJobCard = () => {
+//   if (localJob.value && localJob.value.id) {
+//     emit('update', localJob.value);
+//   } else {
+//     emit('create', localJob.value);
+//   }
+//   emit('close');
+// };
+
+
 const saveJobCard = () => {
   if (localJob.value && localJob.value.id) {
+    const inputsAreNotEmpty = Object.entries(localJob.value).every(([key, value]) => {
+      if (key === 'id') return true;
+      return value != null && value !== '';
+    });
+    if (!inputsAreNotEmpty) {
+      alert('Please fill in all fields.');
+      return;
+    }
     emit('update', localJob.value);
   } else {
+    const allInputsFilled = Object.values(localJob.value).every(value => value != null && value !== '');
+    if (!allInputsFilled) {
+      alert('Please fill in all fields before creating.');
+      return;
+    }
     emit('create', localJob.value);
   }
   emit('close');
 };
-
 const deleteJobCard = () => {
   emit('delete', localJob.value.id);
 };
@@ -191,7 +213,7 @@ input[type="color" i] {
 
 .form-buttons {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .btn-container {
@@ -199,8 +221,8 @@ input[type="color" i] {
 }
 
 .btn {
-  width: 60px;
-  height: 30px;
+  padding: 8px 12px;
+  font-size: $font-size-xs;
   border-radius: 19px;
   border: none;
 }

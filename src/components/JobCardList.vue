@@ -26,10 +26,8 @@ const createJob = (newJob) => {
     />
     <div class="job-card-wrap">
       <div class="job-card add">
-        <div class="icon-add-container">
-          <span
-              @click="toggleModal"
-              class="material-icons">
+        <div   @click="toggleModal" class="icon-add-container">
+          <span class="material-icons">
             add
           </span>
         </div>
