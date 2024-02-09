@@ -11,16 +11,6 @@ const emit = defineEmits(['update', 'delete', 'close', 'toggleFavorite']);
 //   modify the incoming job and ensure data isolation.
 let localJob = ref(job ? {...job} : {title: '', icon: ''});
 
-// const saveJobCard = () => {
-//   if (localJob.value && localJob.value.id) {
-//     emit('update', localJob.value);
-//   } else {
-//     emit('create', localJob.value);
-//   }
-//   emit('close');
-// };
-
-
 const saveJobCard = () => {
   if (localJob.value && localJob.value.id) {
     const inputsAreNotEmpty = Object.entries(localJob.value).every(([key, value]) => {
