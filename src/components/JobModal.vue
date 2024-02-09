@@ -1,5 +1,7 @@
 <script setup>
 import {defineProps, defineEmits, ref, watchEffect} from 'vue';
+import { ColorPicker } from "vue3-colorpicker";
+import "vue3-colorpicker/style.css";
 
 // Define props and emits
 const {job, modalActive} = defineProps(['job', 'modalActive']);
@@ -92,11 +94,7 @@ watchEffect(() => {
                     </div>
                     <div class="input-instruction-color">
                       <div class="choose-title-color">Choose a color for the icon:</div>
-                      <input
-                          class="choose-color"
-                          type="color"
-                          v-model="localJob.color"
-                      >
+                      <color-picker v-model:pureColor="localJob.color" v-model:gradientColor="localJob.color"/>
                     </div>
                   </p>
                 </div>
