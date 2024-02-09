@@ -86,10 +86,12 @@ const toggleModal = () => {
   border-radius: 30px;
   padding-top: 30px;
   border: 1px solid $color-bg;
+  transition: transform 0.3s ease;
 }
 
 .job-card-wrap:hover {
   border: 1px solid $color-icons-UI;
+  transform: translateY(-10px);
 
   .icon-edit-container .material-icons {
     background-color: $color-icons-UI;
